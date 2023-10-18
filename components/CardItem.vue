@@ -5,9 +5,7 @@
     <div class="relative mx-10 my-10 min-h-[400px]">
       <div class="flex w-4/6 flex-col gap-3">
         <h2 class="text-xl font-bold tracking-tight md:text-xl">Track Todos</h2>
-        <p
-          class="text-sm leading-5 text-zinc-600 dark:text-zinc-400 sm:text-base sm:leading-7"
-        >
+        <p class="text-sm leading-5 text-zinc-600 sm:text-base sm:leading-7">
           Ensure to always know what to do next. Mark tasks as done to never
           loose the overview.
         </p>
@@ -25,6 +23,7 @@
             v-for="todo in todos"
             :id="todo.id"
             :title="todo.title"
+            :description="todo.description"
             :label="todo.label"
             :color="todo.color"
             :checked="todo.checked"
@@ -41,12 +40,14 @@ const todos = [
     id: "1",
     title: "Stand Up",
     label: "Hard",
+    description: "Basically impossible",
     color: "red",
     checked: true,
   },
   {
     id: "2",
     title: "Brush teeth",
+    description: "Can be fun",
     label: "Medium",
     color: "yellow",
     checked: true,
@@ -61,6 +62,7 @@ const todos = [
   {
     id: "4",
     title: "Breakfast",
+    description: "Cereals are best!",
     label: "Super easy",
     color: "blue",
     checked: false,

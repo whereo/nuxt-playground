@@ -1,8 +1,8 @@
 <template>
   <label :for="id" class="flex cursor-pointer flex-col items-center pt-2"
     ><div
-      class="flex w-full items-center justify-between gap-3 overflow-hidden rounded-lg bg-gradient-to-r from-white from-70% to-100% p-4 py-2 text-black/90 duration-300 group-active/challenge:duration-75 sm:py-4 border border-1 border-gray-200 overflow-hidden"
-      :class="[colors.gradient, colors.outline]"
+      class="flex w-full items-center justify-between gap-3 overflow-hidden rounded-lg bg-gradient-to-r from-white from-70% to-100% p-4 py-2 text-black/90 duration-300 duration-75 ring-1 ring-gray-200 overflow-hidden"
+      :class="[colors.gradient, colors.ring]"
     >
       <div class="relative flex flex-row items-center gap-3">
         <div class="relative h-5 w-5">
@@ -31,11 +31,20 @@
             <polyline points="20 6 9 17 4 12"></polyline>
           </svg>
         </div>
-        <div class="">{{ title }}</div>
+        <div class="inline-block">
+          <div
+            :class="{
+              'py-2': !description,
+            }"
+          >
+            {{ title }}
+          </div>
+          <div class="text-xs text-zinc-500">{{ description }}</div>
+        </div>
       </div>
       <div class="hidden md:block">
         <div
-          class="inline-flex items-center border rounded-full font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-0 border-transparent px-2.5 py-0.5 text-xs duration-300 text-white uppercase"
+          class="inline-flex rounded-full font-semibold px-2.5 py-0.5 text-xs text-white uppercase"
           :class="colors.pill"
         >
           {{ label }}
@@ -52,6 +61,7 @@ const props = defineProps<{
   id: string;
   color: "blue" | "green" | "red" | "yellow" | "violet";
   title: string;
+  description?: string;
   label: string;
   checked: boolean;
 }>();
@@ -64,31 +74,31 @@ const colors = computed(() => {
       gradient: `to-blue-500/10`,
       checked: `peer-checked:bg-blue-500/80`,
       pill: `bg-blue-500/80`,
-      outline: `hover:border-blue-500/40`,
+      ring: `hover:ring-blue-500/40 focus-within:ring-blue-500`,
     },
     green: {
       gradient: `to-green-500/10`,
       checked: `peer-checked:bg-green-500/80`,
       pill: `bg-green-500/80`,
-      outline: `hover:border-green-500/40`,
+      ring: `hover:ring-green-500/40 focus-within:ring-green-500`,
     },
     yellow: {
       gradient: `to-yellow-500/10`,
       checked: `peer-checked:bg-yellow-500/80`,
       pill: `bg-yellow-500/80`,
-      outline: `hover:border-yellow-500/40`,
+      ring: `hover:ring-yellow-500/40 focus-within:ring-yellow-500`,
     },
     red: {
       gradient: `to-red-500/10`,
       checked: `peer-checked:bg-red-500/80`,
       pill: `bg-red-500/80`,
-      outline: `hover:border-red-500/40`,
+      ring: `hover:ring-red-500/40 focus-within:ring-red-500`,
     },
     violet: {
       gradient: `to-violet-500/10`,
       checked: `peer-checked:bg-violet-500/80`,
       pill: `bg-violet-500/80`,
-      outline: `hover:border-violet-500/40`,
+      ring: `hover:ring-violet-500/40 focus-within:ring-violet-500`,
     },
   };
 

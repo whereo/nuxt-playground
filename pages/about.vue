@@ -25,6 +25,7 @@
             v-for="todo in todos"
             :id="todo.id"
             :title="todo.title"
+            :description="todo.description"
             :label="todo.label"
             :color="todo.color"
             :checked="todo.checked"
@@ -41,12 +42,14 @@ const todos = [
     id: "1",
     title: "Stand Up",
     label: "Hard",
+    description: "Basically impossible",
     color: "red",
     checked: true,
   },
   {
     id: "2",
     title: "Brush teeth",
+    description: "Can be fun",
     label: "Medium",
     color: "yellow",
     checked: true,
@@ -61,6 +64,7 @@ const todos = [
   {
     id: "4",
     title: "Breakfast",
+    description: "Cereals are best!",
     label: "Super easy",
     color: "blue",
     checked: false,

@@ -199,7 +199,7 @@
               </li>
             </ul>
           </li>
-          <li class="-mx-6 mt-auto">
+          <li v-if="user" class="-mx-6 mt-auto" @click="onLogout">
             <a
               href="#"
               class="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50"
@@ -210,7 +210,7 @@
                 alt=""
               />
               <span class="sr-only">Your profile</span>
-              <span aria-hidden="true">Tom Cook</span>
+              <span aria-hidden="true">{{ user.email }}</span>
             </a>
           </li>
         </ul>
@@ -273,7 +273,7 @@ const navigation = [
   { name: "About", href: "/about", icon: UsersIcon },
   { name: "Todo List", href: "/todos", icon: FolderIcon },
   { name: "Chat", href: "/chat", icon: CalendarIcon },
-  // { name: "Documents", href: "#", icon: DocumentDuplicateIcon },
+  { name: "Gantt", href: "/gantt", icon: DocumentDuplicateIcon },
   // { name: "Reports", href: "#", icon: ChartPieIcon },
 ];
 const teams = [
@@ -286,4 +286,12 @@ const sidebarOpen = ref(false);
 
 const route = useRoute();
 const isCurrentRoute = (path) => route.path === path;
+
+const supabase = useSupabaseClient();
+const user = useSupabaseUser();
+
+const onLogout = async () => {
+  console.log(supabase.auth);
+  await supabase.auth.signOut();
+};
 </script>
