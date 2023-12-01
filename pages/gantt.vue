@@ -48,9 +48,9 @@ const createElement = (el) => {
       width: el.width,
     }),
     styles: {
-      top: `${this.s.top}px`,
-      left: `${this.s.left}px`,
-      width: `${this.s.width}px`,
+      top: `${this.s.value.top}px`,
+      left: `${this.s.value.left}px`,
+      width: `${this.s.value.width}px`,
     },
     text: el.text,
     moveLeft() {
@@ -59,7 +59,8 @@ const createElement = (el) => {
   };
 };
 
-const elements = data.map((d) => createElement(d));
+// const elements = data.map((d) => createElement(d));
+const elements = data;
 
 const refs = ref({});
 const createRef = (el) => {
